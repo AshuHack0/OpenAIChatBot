@@ -1,0 +1,34 @@
+[
+    {
+        "title": "Software Developer",
+        "description": "We are looking for a skilled software developer to join our dynamic team. You will be responsible for designing, coding, and testing software solutions.",
+        "location": "Cityville",
+        "salary": "$80,000 - $100,000",
+        "posted_date": "2024-01-06",
+        "stream": "B.Tech"
+    },
+    {
+        "title": "Marketing Specialist",
+        "description": "Join our marketing team and help create engaging campaigns to promote our products. The ideal candidate has a strong understanding of digital marketing strategies.",
+        "location": "Marketingtown",
+        "salary": "$60,000 - $80,000",
+        "posted_date": "2024-01-06",
+        "stream": "BBA"
+    },
+    {
+        "title": "Customer Support Representative",
+        "description": "We are hiring a customer support representative to assist our clients with product inquiries and resolve issues. Strong communication skills are a must.",
+        "location": "Support City",
+        "salary": "$45,000 - $60,000",
+        "posted_date": "2024-01-06",
+        "stream": "BA"
+    },
+    {
+        "title": "Data Analyst",
+        "description": "As a data analyst, you will analyze and interpret complex data sets. Proficiency in data visualization tools and statistical analysis is required.",
+        "location": "Datatown",
+        "salary": "$70,000 - $90,000",
+        "posted_date": "2024-01-06",
+        "stream": "B.Sc"
+    }
+]
