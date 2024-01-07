@@ -6,14 +6,18 @@ import mysql from 'mysql2';
 import { Configuration, OpenAIApi } from "openai";
 dotenv.config();
 const port = 8080;
- 
+
+
+// const jobOpeningsData = JSON.parse(fs.readFileSync('job_openings.json', 'utf-8'));
+
+
 
 // Create a connection pool
 const pool = mysql.createPool({
-    host: 'srv1020.hstgr.io',
-    user: 'u266318027_root',
-    password: 'Roghorpade2023!',
-    database: 'u266318027_myfuse',
+    host: process.env.SQL_HOST_NAME,
+    user:  process.env.SQL_USER_NAME,
+    password: process.env.SQL_PASSWORD,
+    database: process.env.SQL_DATABASE,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
@@ -71,7 +75,7 @@ app.post('/', async (req, res) => {
         // Use the job opening data in the OpenAI prompt
         const prompt = req.body.prompt;
         // const jobOpeningsInfo = jobOpeningsData.map(job => `job title is  ${job.jobtitle} at company   ${job.companyName} on job industry ${job.industry} for job stream ${job.stream} and qulification is ${job.qualification} and this is for ${job.job_nature}`).join(', ');
-        const jobOpeningsInfo = JSON.stringify(jobOpeningsData.map(job => ({
+        const jobOpeningsInfo =  await JSON.stringify(jobOpeningsData.map(job => ({
             Title: job.jobtitle,
             companyName: job.companyName,
             Industry: job.industry,
@@ -79,10 +83,9 @@ app.post('/', async (req, res) => {
             qualification: job.qualification,
             Nature: job.job_nature,
             location: job.location,
-            // experience :job.experience,
+            experience :job.experience,
             // Salary : job.minimumsalary,
-            // CGPA_Required : job.maximumsalary,
-            // link: job.link,
+            // CGPA_Required : job.
             // Responsibilities : job.responsibilities
         })));
         
@@ -91,7 +94,7 @@ app.post('/', async (req, res) => {
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${placementPrompt}`,
-            temperature: 0.8,
+            temperature: 0,
             max_tokens: 3000,
             top_p: 1,
             frequency_penalty: 0.5,
