@@ -116,8 +116,8 @@ app.post('/', async (req, res) => {
 app.post('/normalbot', async (req, res) => {
     try {
         
-        
-        const placementPrompt = `${prompt} for MyFuse.In . You are the Job Placement Portal. You can find the latest job opening information `;
+        const question = req.body.question;
+        const placementPrompt = `${question} for MyFuse.In . You are the Job Placement Portal. You can find the latest job opening information `;
          // Get response from OpenAI API
         const response = await openai.createCompletion({
             model: "text-davinci-003",
