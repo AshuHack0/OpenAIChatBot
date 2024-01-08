@@ -3,7 +3,8 @@ import user from "./assets/user.svg";
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
-const serverApi = "http://localhost:8080/";
+// const serverApi = "http://localhost:8080/";
+const serverApi = "https://myfuseapi.vercel.app/";
 
 let loadInterval;
 

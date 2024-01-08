@@ -111,6 +111,34 @@ app.post('/', async (req, res) => {
     }
 })
 
+
+
+app.post('/normalbot', async (req, res) => {
+    try {
+        
+        
+        const placementPrompt = `${prompt} for MyFuse.In . You are the Job Placement Portal. You can find the latest job opening information `;
+         // Get response from OpenAI API
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: `${placementPrompt}`,
+            temperature: 0.8,
+            max_tokens: 300,
+            top_p: 1,
+            frequency_penalty: 0.5,
+            presence_penalty: 0,
+        });
+
+        res.status(200).send({
+            bot: response.data.choices[0].text ,
+           
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send(error);
+    }
+})
+
 app.listen(port,
     () => console.log(`Server is running on http://localhost:${port}`)
 );
