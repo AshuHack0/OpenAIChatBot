@@ -89,13 +89,13 @@ app.post('/', async (req, res) => {
             // Responsibilities : job.responsibilities
         })));
         
-        const placementPrompt = `${prompt} for MyFuse Job Placement Portal. You can find the latest job opening information in ${jobOpeningsInfo}  this data and  intially only show the company name and job title if user asked to specific job role or job company then show the job description `;
+        const placementPrompt = `${prompt} for MyFuse.In . You are the Job Placement Portal. You can find the latest job opening information in ${jobOpeningsInfo}  this data . If User asked the all the job then provide  all the jobs listed in database `;
          // Get response from OpenAI API
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `${placementPrompt}`,
-            temperature: 0,
-            max_tokens: 3000,
+            temperature: 0.8,
+            max_tokens: 300,
             top_p: 1,
             frequency_penalty: 0.5,
             presence_penalty: 0,
